@@ -24,7 +24,7 @@ if(isset($_POST['add_recipient'])){
 <div class="p-5">
     <div class="row justify-content-center">
         <div class="col-8 p-5 border">
-        <h5 class="text-center mb-3 text-success">Recipient Registraion</h5>
+        <h5 class="text-center mb-3 text-success">Add Recipient</h5>
             <form action="" method="post" id="form">
                 <div class="form-group">
                     <label for="name">Full Name</label>

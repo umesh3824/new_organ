@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['add_recipient'])){
+if(isset($_POST['add_donar'])){
     if(test_input($_POST['password'])==test_input($_POST['confirm_password'])){
         $userData=[
             test_input($_POST['name']),
@@ -10,12 +10,12 @@ if(isset($_POST['add_recipient'])){
             test_input($_POST['address']),
             test_input($_POST['password'])
         ];
-        $data=$recipientObj->addRecipient($userData);
+        $data=$donarObj->addDonar($userData);
     }
     else{
         $data['message']="Confirm password not matched with password.";
     }
-    $recipientObj->showAlert($data['message']);
+    $donarObj->showAlert($data['message']);
 }
 
 
@@ -24,7 +24,7 @@ if(isset($_POST['add_recipient'])){
 <div class="p-5">
     <div class="row justify-content-center">
         <div class="col-8 p-5 border">
-        <h5 class="text-center mb-3 text-success">Recipient Registraion</h5>
+        <h5 class="text-center mb-3 text-success">Add Donar</h5>
             <form action="" method="post" id="form">
                 <div class="form-group">
                     <label for="name">Full Name</label>
@@ -55,7 +55,7 @@ if(isset($_POST['add_recipient'])){
                     <input type="password" class="form-control" name="confirm_password" placeholder="Password" required>
                 </div>
                 <div class="text-center mt-2">
-                    <button type="submit" class="btn btn-success" name="add_recipient">Submit</button>
+                    <button type="submit" class="btn btn-success" name="add_donar">Submit</button>
                 </div>
             </form>
         </div>

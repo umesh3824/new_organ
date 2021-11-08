@@ -5,13 +5,18 @@
   text-decoration: none;
   background-color: green;
   color: white;
-  padding: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 .s-btn:hover{
   text-decoration: none;
   background-color: rgba(0, 128, 0, 0.692);
   color: white;
-  padding: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.link-icon{
+  margin:3px;
 }
 /* tab bar */
 .tab-bar{

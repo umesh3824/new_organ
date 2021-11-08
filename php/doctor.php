@@ -2,9 +2,10 @@
 class Doctor extends Record{
     public $DBObj;
     public $addSql="INSERT INTO doctor(doctor_name,doctor_email,doctor_contactno,doctor_password,doctor_qualification, organization_name,address) VALUES (?,?,?,?,?,?,?)";
-    public $updateSql="UPDATE events SET eventTitle=?,eventPassword=?,eventOpenToAll=?,eventIsLive=?,eventIsWebinar=? WHERE eventId=?";
-    public $deleteSql="DELETE FROM events WHERE eventId=?";
+    public $updateSql="UPDATE doctor SET doctor_name=?,doctor_email=?,doctor_contactno=?,doctor_password=?,doctor_qualification=?,organization_name=?,address=? WHERE doctor_id=?";
+    public $deleteSql="DELETE FROM doctor WHERE doctor_id=?";
     public $selectAllSql="SELECT * FROM doctor";
+    public $selectSingleSql="SELECT * FROM doctor WHERE doctor_id=?";
   
     function __construct($DBObj){
         $this->DBObj=$DBObj;
@@ -13,18 +14,18 @@ class Doctor extends Record{
         $param_type="sssssss";
         return $this->DBObj->insert($this->addSql,$param_type,$data,"Doctor has been added.","Operation failed");;
     }
-    public function updateEvent($data){
-        $param_type="sssssi";
-        return $this->DBObj->update($this->updateSql,$param_type,$data,"Event has been update.","Operation failed");;
+    public function updateDoctor($data){
+        $param_type="sssssssi";
+        return $this->DBObj->update($this->updateSql,$param_type,$data,"Doctor has been update.","Operation failed");;
     }
-    public function deleteEvent($data){
+    public function deleteDoctor($data){
         $param_type="i";
-        return $this->DBObj->delete($this->deleteSql,$param_type,$data,"Event has been deleted.","Operation failed");;
+        return $this->DBObj->delete($this->deleteSql,$param_type,$data,"Doctor has been deleted.","Operation failed");;
     }
     public function selectAllDoctors(){
         return $this->DBObj->selectAll($this->selectAllSql,"All doctor.","Operation failed");
     }
-    public function selectSingleEvent($data){
+    public function selectSingleDoctor($data){
         $param_type="i";
         return $this->DBObj->select($this->selectSingleSql,$param_type,$data,"Single event","Operation failed");
     }

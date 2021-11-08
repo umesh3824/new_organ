@@ -1,45 +1,61 @@
+<?php
+
+if(isset($_POST['add_donar'])){
+    if(test_input($_POST['password'])==test_input($_POST['confirm_password'])){
+        $userData=[
+            test_input($_POST['name']),
+            test_input($_POST['email']),
+            test_input($_POST['contactno']),
+            test_input($_POST['dob']),
+            test_input($_POST['address']),
+            test_input($_POST['password'])
+        ];
+        $data=$donarObj->addDonar($userData);
+    }
+    else{
+        $data['message']="Confirm password not matched with password.";
+    }
+    $donarObj->showAlert($data['message']);
+}
+
+
+
+?>
 <div class="p-5">
     <div class="row justify-content-center">
         <div class="col-8 p-5 border">
-        <h5 class="text-center mb-3 text-success">Donar Registration</h5>
-            <form>
+        <h5 class="text-center mb-3 text-success">Donar Registraion</h5>
+            <form action="" method="post" id="form">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Full Name</label>
-                    <input type="text" class="form-control" placeholder="Enter name">
+                    <label for="name">Full Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter name" required>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" placeholder="Enter email">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" name="email" placeholder="Enter email" required >
                 </div>
                 <div class="form-group">
-                    <label for="contactbo">Contact No</label>
-                    <input type="text" class="form-control" placeholder="Enter contact no">
+                    <label for="contactno">Contact No</label>
+                    <input type="text" class="form-control" name="contactno" placeholder="Enter contact no" required>
                 </div>
                 <div class="form-group">
-                    <label for="contactbo">Select DOB</label>
-                    <input type="text" class="form-control">
+                    <label for="dob">select DOB</label>
+                    <input type="date" class="form-control" name="dob" required>
+                </div>                
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea class="form-control" name="address" placeholder="Enter address here"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="contactbo">Which Organ Do you want to donate?</label>
-                    <select class="form-control">
-                        <option value="organ 1">Organ 1</option>
-                        <option value="organ 2">Organ 2</option>
-                    </select>
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Password" required>
                 </div>
                 <div class="form-group">
-                    <label for="contactbo">Address</label>
-                    <textarea class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Confirm Password</label>
-                    <input type="password" class="form-control" placeholder="Password">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" class="form-control" name="confirm_password" placeholder="Password" required>
                 </div>
                 <div class="text-center mt-2">
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-success" name="add_donar">Submit</button>
                 </div>
             </form>
         </div>
