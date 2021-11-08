@@ -1,0 +1,26 @@
+.w50{
+  width:  40vw;
+}
+.s-btn{
+  text-decoration: none;
+  background-color: green;
+  color: white;
+  padding: 5px;
+}
+.s-btn:hover{
+  text-decoration: none;
+  background-color: rgba(0, 128, 0, 0.692);
+  color: white;
+  padding: 5px;
+}
+/* tab bar */
+.tab-bar{
+  padding: 10px;
+  text-align: center;
+}
+.tab-bar .tab{
+  text-decoration: none;
+  padding: 10px;
+  color: white;
+  font-weight: 500;
+}
