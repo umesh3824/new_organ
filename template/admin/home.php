@@ -4,11 +4,15 @@ include "../../php/includes/DBController.php";
 include "../../php/doctor.php";
 include "../../php/donar.php";
 include "../../php/recipient.php";
+include "../../php/organ.php";
+include "../../php/admin.php";
 
 $DBObj=new DBController($con);
 $doctorObj=new Doctor($DBObj);
 $donarObj=new Donar($DBObj);
 $recipientObj=new Recipient($DBObj);
+$oragnObj=new Organ($DBObj);
+$adminObj=new Admin($DBObj);
 ?>
 <!doctype html>
 <html lang="en">
@@ -34,6 +38,7 @@ $recipientObj=new Recipient($DBObj);
         <a href="?pageflag=arecipientlist" class="tab">Recipient</a>
         <a href="?pageflag=doctorlist" class="tab">Doctors</a>
         <a href="organ_check_availibility.php" class="tab">Check Availability</a>
+        <a href="../logout.php" class="tab">Logout</a>
       </nav>
       <?php
           if (isset($_GET['pageflag'])) {

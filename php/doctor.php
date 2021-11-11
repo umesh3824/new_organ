@@ -12,15 +12,15 @@ class Doctor extends Record{
     }
     public function addDoctor($data){
         $param_type="sssssss";
-        return $this->DBObj->insert($this->addSql,$param_type,$data,"Doctor has been added.","Operation failed");;
+        return $this->DBObj->insert($this->addSql,$param_type,$data,"Doctor has been added.","Operation failed");
     }
     public function updateDoctor($data){
         $param_type="sssssssi";
-        return $this->DBObj->update($this->updateSql,$param_type,$data,"Doctor has been update.","Operation failed");;
+        return $this->DBObj->update($this->updateSql,$param_type,$data,"Doctor has been update.","Operation failed");
     }
     public function deleteDoctor($data){
         $param_type="i";
-        return $this->DBObj->delete($this->deleteSql,$param_type,$data,"Doctor has been deleted.","Operation failed");;
+        return $this->DBObj->delete($this->deleteSql,$param_type,$data,"Doctor has been deleted.","Operation failed");
     }
     public function selectAllDoctors(){
         return $this->DBObj->selectAll($this->selectAllSql,"All doctor.","Operation failed");

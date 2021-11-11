@@ -23,6 +23,9 @@ function test_input($data) {
 function isChecked($data){
     return $data=="YES"?"checked":"";
 }
+function cmpData($data1,$data2){
+  return $data1==$data2?"selected":"";
+}
 
 class Record{
   public $DBObj;

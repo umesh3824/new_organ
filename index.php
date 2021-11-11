@@ -4,11 +4,15 @@ include "php/includes/DBController.php";
 include "php/doctor.php";
 include "php/donar.php";
 include "php/recipient.php";
+include "php/organ.php";
+include "php/admin.php";
 
 $DBObj=new DBController($con);
 $doctorObj=new Doctor($DBObj);
 $donarObj=new Donar($DBObj);
 $recipientObj=new Recipient($DBObj);
+$oragnObj=new Organ($DBObj);
+$adminObj=new Admin($DBObj);
 ?>
 <!doctype html>
 <html lang="en">
@@ -30,9 +34,11 @@ $recipientObj=new Recipient($DBObj);
     <div class="shadow mt-5 border card">
       <nav class="bg-success tab-bar">
         <a href="index.php" class="tab">Home</a>
-        <a href="?pageflag=donarlogin" class="tab">Donar</a>
-        <a href="?pageflag=recipientlogin" class="tab">Recipient</a>
-        <a href="organ_check_availibility.php" class="tab">Check Availability</a>
+        <a href="?pageflag=donarapplication" class="tab">Donar</a>
+        <a href="?pageflag=recipientapplication" class="tab">Recipient</a>
+        <a href="?pageflag=organcheckavailibility" class="tab">Check Availability</a>
+        <a href="?pageflag=admin" class="tab">Admin</a>
+        <div class="dropdown show">
       </nav>
       <?php
           if (isset($_GET['pageflag'])) {
@@ -44,17 +50,17 @@ $recipientObj=new Recipient($DBObj);
             case "index":
               include "template/index.php";
               break;
-            case "donarlogin":
-              include "template/donar_login.php";
+            case "donarapplication":
+              include "template/donar_application.php";
               break;
-            case "recipientlogin":
-              include "template/recipient_login.php";
+            case "recipientapplication":
+              include "template/recipient_application.php";
               break;
-            case "donarregistration":
-              include "template/donar_registration.php";
+            case "organcheckavailibility":
+              include "template/organ_check_availibility.php";
               break;
-            case "recipientregistration":
-              include "template/recipient_registration.php";
+             case "admin":
+              include "template/admin_login.php";
               break;
             default:
               echo "<h class='text-center text-danger'> Invalid URL</h1>";

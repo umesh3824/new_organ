@@ -1,26 +1,22 @@
 <?php
 
 if(isset($_POST['update_recipient'])){
-    if(test_input($_POST['password'])==test_input($_POST['confirm_password'])){
-        $userData=[
-            test_input($_POST['name']),
-            test_input($_POST['email']),
-            test_input($_POST['contactno']),
-            test_input($_POST['dob']),
-            test_input($_POST['address']),
-            test_input($_POST['password']),
-            test_input($_GET['did'])
-        ];
-        $data=$recipientObj->updateRecipient($userData);
-    }
-    else{
-        $data['message']="Confirm password not matched with password.";
-    }
+    $userData=[
+        test_input($_POST['name']),
+        test_input($_POST['email']),
+        test_input($_POST['contactno']),
+        test_input($_POST['dob']),
+        test_input($_POST['address']),
+        test_input($_POST['organ']),
+        test_input($_GET['did'])
+    ];
+    $data=$recipientObj->updateRecipient($userData);
     $recipientObj->showAlert($data['message']);
 }
 
 
 $recipientData=$recipientObj->selectSingleRecipient([test_input($_GET['did'])])['data'][0];
+$organData=$oragnObj->selectAllOrgans()['data'];
 ?>
 <div class="p-5">
     <div class="row justify-content-center">
@@ -48,12 +44,12 @@ $recipientData=$recipientObj->selectSingleRecipient([test_input($_GET['did'])])[
                     <textarea class="form-control" name="address" placeholder="Enter address here"><?php echo $recipientData['recipient_address']; ?></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Password" required value="<?php echo $recipientData['recipient_password']; ?>">
-                </div>
-                <div class="form-group">
-                    <label for="confirm_password">Confirm Password</label>
-                    <input type="password" class="form-control" name="confirm_password" placeholder="Password" required value="<?php echo $recipientData['recipient_password']; ?>">
+                    <label for="address">Which Organ Do you need?</label>
+                    <select class="form-control" name="organ">
+                        <?php foreach($organData as $organ){ ?>
+                            <option value="<?php echo $organ['organ_id']; ?>" <?php echo cmpData($organ['organ_id'],$recipientData['organ_id']); ?>><?php echo $organ['organ_name']; ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
                 <div class="text-center mt-2">
                     <button type="submit" class="btn btn-success" name="update_recipient">Update</button>

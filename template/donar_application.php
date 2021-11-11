@@ -1,30 +1,24 @@
 <?php
 
 if(isset($_POST['add_donar'])){
-    if(test_input($_POST['password'])==test_input($_POST['confirm_password'])){
-        $userData=[
-            test_input($_POST['name']),
-            test_input($_POST['email']),
-            test_input($_POST['contactno']),
-            test_input($_POST['dob']),
-            test_input($_POST['address']),
-            test_input($_POST['password'])
-        ];
-        $data=$donarObj->addDonar($userData);
-    }
-    else{
-        $data['message']="Confirm password not matched with password.";
-    }
+    $userData=[
+        test_input($_POST['name']),
+        test_input($_POST['email']),
+        test_input($_POST['contactno']),
+        test_input($_POST['dob']),
+        test_input($_POST['address']),
+        test_input($_POST['organ'])
+    ];
+    $data=$donarObj->addDonar($userData);
     $donarObj->showAlert($data['message']);
 }
 
-
-
+$organData=$oragnObj->selectAllOrgans()['data'];
 ?>
 <div class="p-5">
     <div class="row justify-content-center">
         <div class="col-8 p-5 border">
-        <h5 class="text-center mb-3 text-success">Donar Registraion</h5>
+        <h5 class="text-center mb-3 text-success">Donar Application Form</h5>
             <form action="" method="post" id="form">
                 <div class="form-group">
                     <label for="name">Full Name</label>
@@ -47,12 +41,12 @@ if(isset($_POST['add_donar'])){
                     <textarea class="form-control" name="address" placeholder="Enter address here"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirm_password">Confirm Password</label>
-                    <input type="password" class="form-control" name="confirm_password" placeholder="Password" required>
+                    <label for="address">Which Organ Do you want to donate?</label>
+                    <select class="form-control" name="organ">
+                        <?php foreach($organData as $organ){ ?>
+                            <option value="<?php echo $organ['organ_id']; ?>"><?php echo $organ['organ_name']; ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
                 <div class="text-center mt-2">
                     <button type="submit" class="btn btn-success" name="add_donar">Submit</button>
