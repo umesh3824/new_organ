@@ -3,9 +3,20 @@ if (isset($_GET['did'])) {
     $data = $recipientObj->deleteRecipient([test_input($_GET['did'])]);
     $recipientObj->showAlert($data['message']);
 }
+if (isset($_POST['schedule'])) {
+    $appData=[
+        "recipient_id"=>test_input($_POST['recipient_id']),
+        "doctor_id"=>test_input($_POST['doctor_id']),
+        "ra_date"=>test_input($_POST['ra_date'])];
+        
+    $data = $RAppointmentObj->addRAppointment($appData);
+    $RAppointmentObj->showAlert($data['message']);
+}
+
 if(!isset($_POST['process_status'])) $status="ALL";
 else $status=$_POST['process_status']; 
 $allRecipientData = $recipientObj->selectAllRecipientsByStatus($status)['data'];
+$allDoctorData=$doctorObj->selectAllDoctors()['data'];
 ?>
 <div>
     <h4 class="text-center mb-3 text-success mt-2">Recipient List </h4>
@@ -48,6 +59,7 @@ $allRecipientData = $recipientObj->selectAllRecipientsByStatus($status)['data'];
                         <span class="badge bg-<?php echo getColor($recipientData['process_status']); ?>"><?php echo ucfirst(strtolower($recipientData['process_status'])); ?></span>
                             <a href="?pageflag=updaterecipient&did=<?php echo $recipientData['recipient_id']; ?>" class="link-icon text-success"><i class="fas fa-user-edit"></i></a>
                             <a href="?pageflag=arecipientlist&did=<?php echo $recipientData['recipient_id']; ?>" class="link-icon text-danger"><i class="fas fa-trash-alt"></i></a>
+                            <?php if($recipientData['process_status']=="PENDING"){ ?><a href="?pageflag=arecipientlist" onClick="setIDData(<?php echo $recipientData['recipient_id']; ?>)" class="link-icon text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-handshake"></i></a><?php } ?>
                         </td>
                     </tr>
                 <?php } ?>
@@ -56,7 +68,43 @@ $allRecipientData = $recipientObj->selectAllRecipientsByStatus($status)['data'];
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Schedule Appointment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="?pageflag=arecipientlist" method="post">
+            <div class="form-group">
+                <label for="did">Select Doctor</label>
+                <select class="form-control" id="did" name="doctor_id" required>
+                    <?php foreach($allDoctorData as $doctor) {?>
+                    <option value="<?php echo $doctor['doctor_id']; ?>"><?php echo $doctor['doctor_name']; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date">Select Date</label>
+                <input type="date" class="form-control" name="ra_date" required>
+            </div>
+            <input type="text" style="visibility:hidden;height:0px;" name="recipient_id" id="recipient_id" required>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success" name="schedule">Schedule</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 
+<script>
+    function setIDData(uid){
+        document.getElementById('recipient_id').value=uid;
+    }
+</script>
 <?php
 
 function getColor($status){

@@ -3,10 +3,20 @@ if (isset($_GET['did'])) {
     $data = $donarObj->deleteDonar([test_input($_GET['did'])]);
     $donarObj->showAlert($data['message']);
 }
+if (isset($_POST['schedule'])) {
+    $appData=[
+        "donar_id"=>test_input($_POST['donar_id']),
+        "doctor_id"=>test_input($_POST['doctor_id']),
+        "da_date"=>test_input($_POST['da_date'])];
+        
+    $data = $DAppointmentObj->addDAppointment($appData);
+    $DAppointmentObj->showAlert($data['message']);
+}
 if(!isset($_POST['process_status'])) $status="ALL";
 else $status=$_POST['process_status']; 
 
 $allDonarData = $donarObj->selectAllDonarsByStatus($status)['data'];
+$allDoctorData=$doctorObj->selectAllDoctors()['data'];
 ?>
 <div>
     <h4 class="text-center mb-3 text-success mt-2">Donar List </h4>
@@ -49,6 +59,7 @@ $allDonarData = $donarObj->selectAllDonarsByStatus($status)['data'];
                             <span class="badge bg-<?php echo getColor($donarData['process_status']); ?>"><?php echo ucfirst(strtolower($donarData['process_status'])); ?></span>
                             <a href="?pageflag=updatedonar&did=<?php echo $donarData['donar_id']; ?>" class="link-icon text-success"><i class="fas fa-user-edit"></i></a>
                             <a href="?pageflag=adonarlist&did=<?php echo $donarData['donar_id']; ?>" class="link-icon text-danger"><i class="fas fa-trash-alt"></i></a>
+                            <?php if($donarData['process_status']=="PENDING"){ ?><a href="?pageflag=adonarlist" onClick="setIDData(<?php echo $donarData['donar_id']; ?>)" class="link-icon text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-handshake"></i></a><?php } ?>
                         </td>
                     </tr>
                 <?php } ?>
@@ -57,6 +68,43 @@ $allDonarData = $donarObj->selectAllDonarsByStatus($status)['data'];
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Schedule Appointment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="?pageflag=adonarlist" method="post">
+            <div class="form-group">
+                <label for="did">Select Doctor</label>
+                <select class="form-control" id="did" name="doctor_id" required>
+                    <?php foreach($allDoctorData as $doctor) {?>
+                    <option value="<?php echo $doctor['doctor_id']; ?>"><?php echo $doctor['doctor_name']; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date">Select Date</label>
+                <input type="date" class="form-control" name="da_date" required>
+            </div>
+            <input type="text" style="visibility:hidden;height:0px;" name="donar_id" id="donar_id" required>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success" name="schedule">Schedule</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+    function setIDData(uid){
+        document.getElementById('donar_id').value=uid;
+    }
+</script>
 
 <?php
 

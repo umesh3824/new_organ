@@ -5,10 +5,24 @@ if(isset($_POST['login'])){
         test_input($_POST['password']),
     ];
     
-    $data=$_POST['userRole']="ADMIN"? $adminObj->login($userData): "";
+   if($_POST['userRole']=="ADMIN"){
+        $data=$adminObj->login($userData);
+        if($data['status']==TRUE){
+            $url="admin";
+            $_SESSION['userid']=$data['data'][0]['admin_id'];
+            $_SESSION['userRole']="ADMIN";
+        }
+   }else if($_POST['userRole']=="DOCTOR"){
+        $data=$doctorObj->login($userData);
+        if($data['status']==TRUE){
+            $url="doctor";
+            $_SESSION['userid']=$data['data'][0]['doctor_id'];
+            $_SESSION['userRole']="DOCTOR";
+        }
+   }
     $donarObj->showAlert($data['message']);
     if($data['status']==TRUE){
-        header("location:template/admin/");
+        header("location:template/".$url);
     }
 }
 ?>

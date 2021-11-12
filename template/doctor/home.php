@@ -17,7 +17,6 @@ $oragnObj=new Organ($DBObj);
 $adminObj=new Admin($DBObj);
 $DAppointmentObj=new DAppointment($DBObj);
 $RAppointmentObj=new RAppointment($DBObj);
-
 if(!isset($_SESSION['userid'])){
   header("location:../../");
 }
@@ -41,11 +40,9 @@ if(!isset($_SESSION['userid'])){
   <div class="container">
     <div class="shadow mt-5 border card">
       <nav class="bg-success tab-bar">
-        <a href="home.php" class="tab">Dshaboard</a>
-        <a href="?pageflag=adonarlist" class="tab">Donar</a>
-        <a href="?pageflag=arecipientlist" class="tab">Recipient</a>
-        <a href="?pageflag=doctorlist" class="tab">Doctors</a>
-        <a href="organ_check_availibility.php" class="tab">Check Availability</a>
+        <a href="home.php" class="tab">Dashaboard</a>
+        <a href="?pageflag=donarappointments" class="tab">Donar</a>
+        <a href="?pageflag=recipientappointments" class="tab">Recipient</a>
         <a href="../logout.php" class="tab">Logout</a>
       </nav>
       <?php
@@ -58,32 +55,17 @@ if(!isset($_SESSION['userid'])){
             case "adashboard":
               include "dashboard.php";
               break;
-            case "adonarlist":
-              include "donar_list.php";
+            case "donarappointments":
+              include "donar_appointments.php";
               break;
-            case "adddonar":
-              include "donar_add.php";
+            case "viewdonar":
+              include "view_donar.php";
               break;
-            case "updatedonar":
-              include "donar_update.php";
+            case "recipientappointments":
+              include "recipient_appointments.php";
               break;
-            case "arecipientlist":
-              include "recipient_list.php";
-              break;
-            case "addrecipient":
-              include "recipient_add.php";
-              break;
-            case "updaterecipient":
-              include "recipient_update.php";
-              break;
-            case "doctorlist":
-              include "doctor_list.php";
-              break;
-            case "adddoctor":
-              include "doctor_add.php";
-              break;
-            case "updatedoctor":
-              include "doctor_update.php";
+            case "viewrecipient":
+              include "view_recipient.php";
               break;
             default:
               echo "<h class='text-center text-danger'> Invalid URL</h1>";

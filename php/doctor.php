@@ -6,7 +6,9 @@ class Doctor extends Record{
     public $deleteSql="DELETE FROM doctor WHERE doctor_id=?";
     public $selectAllSql="SELECT * FROM doctor";
     public $selectSingleSql="SELECT * FROM doctor WHERE doctor_id=?";
-  
+    
+    public $loginSql="SELECT * FROM doctor WHERE  doctor_email=? AND doctor_password=?";
+
     function __construct($DBObj){
         $this->DBObj=$DBObj;
     }
@@ -28,6 +30,10 @@ class Doctor extends Record{
     public function selectSingleDoctor($data){
         $param_type="i";
         return $this->DBObj->select($this->selectSingleSql,$param_type,$data,"Single event","Operation failed");
+    }
+    public function login($data){
+        $param_type="ss";
+        return $this->DBObj->select($this->loginSql,$param_type,$data,"Login successful.","Enter correct credentials.");
     }
 }
 
