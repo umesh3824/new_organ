@@ -1,5 +1,5 @@
 <?php
-include "php/includes/config.php";
+include "./php/includes/config.php";
 // include "php/includes/DBController.php";
 // include "php/doctor.php";
 // include "php/donar.php";
