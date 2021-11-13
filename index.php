@@ -47,21 +47,21 @@
             $pageflag = "index";
           }
           switch ($pageflag) {
-            // case "index":
-            //   include "template/index.php";
-            //   break;
-            // case "donarapplication":
-            //   include "template/donar_application.php";
-            //   break;
-            // case "recipientapplication":
-            //   include "template/recipient_application.php";
-            //   break;
-            // case "organcheckavailibility":
-            //   include "template/organ_check_availibility.php";
-            //   break;
-            //  case "admin":
-            //   include "template/admin_login.php";
-            //   break;
+            case "index":
+              include "template/index.php";
+              break;
+            case "donarapplication":
+              include "template/donar_application.php";
+              break;
+            case "recipientapplication":
+              include "template/recipient_application.php";
+              break;
+            case "organcheckavailibility":
+              include "template/organ_check_availibility.php";
+              break;
+             case "admin":
+              include "template/admin_login.php";
+              break;
             default:
               echo "<h class='text-center text-danger'> Invalid URL</h1>";
           }
