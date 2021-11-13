@@ -28,7 +28,7 @@ if(isset($_POST['login'])){
    }
     $donarObj->showAlert($data['message']);
     if($data['status']==TRUE){
-        header("location:template/".$url);
+        header("location:template/".$url."/home.php");
     }
 }
 ?>
