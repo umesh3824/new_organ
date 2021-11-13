@@ -39,8 +39,13 @@ if(!isset($_SESSION['userid'])){
 <body class="bg-light">
   <div class="container">
     <div class="shadow mt-5 border card">
+      <div class="text-dark d-flex justify-content-around p-2">
+        <span class="badge bg-text">Name: <?php echo $_SESSION['name']; ?></span>
+        <span class="badge bg-text">Email: <?php echo $_SESSION['email']; ?></span>
+        <span class="badge bg-text">Contact No: <?php echo $_SESSION['contactno']; ?></span>
+      </div>
       <nav class="bg-success tab-bar">
-        <a href="home.php" class="tab">Dashaboard</a>
+        <a href="home.php" class="tab">Dashboard</a>
         <a href="?pageflag=donarappointments" class="tab">Donar</a>
         <a href="?pageflag=recipientappointments" class="tab">Recipient</a>
         <a href="../logout.php" class="tab">Logout</a>

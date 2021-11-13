@@ -7,7 +7,6 @@ if(isset($_POST['update_recipient'])){
         test_input($_POST['contactno']),
         test_input($_POST['dob']),
         test_input($_POST['address']),
-        test_input($_POST['organ']),
         test_input($_GET['did'])
     ];
     $data=$recipientObj->updateRecipient($userData);
@@ -16,7 +15,6 @@ if(isset($_POST['update_recipient'])){
 
 
 $recipientData=$recipientObj->selectSingleRecipient([test_input($_GET['did'])])['data'][0];
-$organData=$oragnObj->selectAllOrgans()['data'];
 ?>
 <div class="p-5">
     <div class="row justify-content-center">
@@ -44,12 +42,8 @@ $organData=$oragnObj->selectAllOrgans()['data'];
                     <textarea class="form-control" name="address" placeholder="Enter address here"><?php echo $recipientData['recipient_address']; ?></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="address">Which Organ Do you need?</label>
-                    <select class="form-control" name="organ">
-                        <?php foreach($organData as $organ){ ?>
-                            <option value="<?php echo $organ['organ_id']; ?>" <?php echo cmpData($organ['organ_id'],$recipientData['organ_id']); ?>><?php echo $organ['organ_name']; ?></option>
-                        <?php } ?>
-                    </select>
+                    <label for="address">Organ Name</label>
+                    <input type="text" class="form-control"required value="<?php echo $recipientData['organ_name']; ?>"  disabled>
                 </div>
                 <div class="text-center mt-2">
                     <button type="submit" class="btn btn-success" name="update_recipient">Update</button>

@@ -6,7 +6,9 @@ class Organ extends Record{
     public $deleteSql="DELETE FROM organ WHERE organ_id=?";
     public $selectAllSql="SELECT * FROM organ";
     public $selectSingleSql="SELECT * FROM organ WHERE organ_id=?";
-  
+    
+    public $searchOrganSql="SELECT * FROM organ_transaction INNER JOIN donar ON donar.donar_id=organ_transaction.donar_id INNER JOIN organ ON organ.organ_id=donar.organ_id WHERE donar.organ_id=? AND organ_transaction.recipient_id=0";
+    public $getOrganIdByOTIdSql="SELECT * FROM organ_transaction INNER JOIN donar ON donar.donar_id=organ_transaction.donar_id INNER JOIN organ ON organ.organ_id=donar.organ_id WHERE organ_transaction.ot_id=?";
     function __construct($DBObj){
         $this->DBObj=$DBObj;
     }
@@ -28,6 +30,14 @@ class Organ extends Record{
     public function selectSingleOrgan($data){
         $param_type="i";
         return $this->DBObj->select($this->selectSingleSql,$param_type,$data,"Single event","Operation failed");
+    }
+    public function searchOrgan($organ_id){
+        $param_type="i";
+        return $this->DBObj->select($this->searchOrganSql,$param_type,[$organ_id],"Organ is available.","Organ is not available.");
+    }
+    public function getOrganIdByOTId($OT_id){
+        $param_type="i";
+        return $this->DBObj->select($this->getOrganIdByOTIdSql,$param_type,[$OT_id],"Organ is available.","Organ is not available.");
     }
 }
 

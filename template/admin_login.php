@@ -11,6 +11,9 @@ if(isset($_POST['login'])){
             $url="admin";
             $_SESSION['userid']=$data['data'][0]['admin_id'];
             $_SESSION['userRole']="ADMIN";
+            $_SESSION['email']=$data['data'][0]['admin_email'];
+            $_SESSION['name']=$data['data'][0]['admin_name'];
+            $_SESSION['contactno']=$data['data'][0]['admin_contactno'];
         }
    }else if($_POST['userRole']=="DOCTOR"){
         $data=$doctorObj->login($userData);
@@ -18,6 +21,9 @@ if(isset($_POST['login'])){
             $url="doctor";
             $_SESSION['userid']=$data['data'][0]['doctor_id'];
             $_SESSION['userRole']="DOCTOR";
+            $_SESSION['email']=$data['data'][0]['doctor_email'];
+            $_SESSION['name']=$data['data'][0]['doctor_name'];
+            $_SESSION['contactno']=$data['data'][0]['doctor_contactno'];
         }
    }
     $donarObj->showAlert($data['message']);

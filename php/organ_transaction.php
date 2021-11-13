@@ -4,11 +4,7 @@ class OrganTransaction extends Record{
     public $addDonarOTSql="INSERT INTO organ_transaction(donar_id) VALUES (?)";
     public $addRecipientOTSql="UPDATE organ_transaction SET recipient_id=? WHERE ot_id=?";
     
-    // public $updateSql="";
-    // public $deleteSql="DELETE FROM organ WHERE organ_id=?";
-    // public $selectAllSql="SELECT * FROM organ";
-    // public $selectSingleSql="SELECT * FROM organ WHERE organ_id=?";
-  
+    public $selectAllSql="SELECT * FROM organ INNER JOIN donar ON donar.organ_id=organ.organ_id INNER JOIN organ_transaction ON donar.donar_id=organ_transaction.donar_id INNER JOIN recipient ON recipient.recipient_id=organ_transaction.recipient_id WHERE recipient.process_status='SUCCESS'";
     function __construct($DBObj){
         $this->DBObj=$DBObj;
     }
@@ -20,21 +16,9 @@ class OrganTransaction extends Record{
         $param_type="ii";
         return $this->DBObj->update($this->addRecipientOTSql,$param_type,$data,"OT has been update.","Operation failed");
     }
-    // public function updateOT($data){
-    //     $param_type="sssssssi";
-    //     return $this->DBObj->update($this->updateSql,$param_type,$data,"Organ has been update.","Operation failed");
-    // }
-    // public function deleteOT($data){
-    //     $param_type="i";
-    //     return $this->DBObj->delete($this->deleteSql,$param_type,$data,"Organ has been deleted.","Operation failed");
-    // }
-    // public function selectAllOrgans(){
-    //     return $this->DBObj->selectAll($this->selectAllSql,"All organ.","Operation failed");
-    // }
-    // public function selectSingleOrgan($data){
-    //     $param_type="i";
-    //     return $this->DBObj->select($this->selectSingleSql,$param_type,$data,"Single event","Operation failed");
-    // }
+    public function selectAllOT(){
+        return $this->DBObj->selectAll($this->selectAllSql,"All organ.","Operation failed");
+    }
 }
 
 // $eventObj=new Event($DBObj);

@@ -1,15 +1,16 @@
 <?php
 
 if(isset($_POST['add_recipient'])){
+    $indata=$oragnObj->getOrganIdByOTId($_POST['ot_id']);
     $userData=[
         test_input($_POST['name']),
         test_input($_POST['email']),
         test_input($_POST['contactno']),
         test_input($_POST['dob']),
         test_input($_POST['address']),
-        test_input($_POST['organ'])
+        $indata['data'][0]['organ_id']
     ];
-    $data=$recipientObj->addRecipient($userData);
+    $data=$recipientObj->addRecipient($userData,test_input($_POST['ot_id']));
     $recipientObj->showAlert($data['message']);
 }
 
@@ -42,12 +43,8 @@ $organData=$oragnObj->selectAllOrgans()['data'];
                     <textarea class="form-control" name="address" placeholder="Enter address here"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="address">Which Organ Do you need?</label>
-                    <select class="form-control" name="organ">
-                        <?php foreach($organData as $organ){ ?>
-                            <option value="<?php echo $organ['organ_id']; ?>"><?php echo $organ['organ_name']; ?></option>
-                        <?php } ?>
-                    </select>
+                    <label for="address">Enter Organ ID</label>
+                    <input type="text" class="form-control" name="ot_id" placeholder="Enter Organ ID">
                 </div>
                 <div class="text-center mt-2">
                     <button type="submit" class="btn btn-success" name="add_recipient">Submit</button>

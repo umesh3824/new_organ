@@ -8,6 +8,7 @@ include "../../php/organ.php";
 include "../../php/admin.php";
 include "../../php/donar_appointment.php";
 include "../../php/recipient_appointment.php";
+include "../../php/organ_transaction.php";
 
 $DBObj=new DBController($con);
 $doctorObj=new Doctor($DBObj);
@@ -17,6 +18,7 @@ $oragnObj=new Organ($DBObj);
 $adminObj=new Admin($DBObj);
 $DAppointmentObj=new DAppointment($DBObj);
 $RAppointmentObj=new RAppointment($DBObj);
+$organTransactionObj=new OrganTransaction($DBObj);
 
 if(!isset($_SESSION['userid'])){
   header("location:../../");
@@ -40,12 +42,18 @@ if(!isset($_SESSION['userid'])){
 <body class="bg-light">
   <div class="container">
     <div class="shadow mt-5 border card">
+      <div class="text-dark d-flex justify-content-around p-2">
+        <span class="badge bg-text">Name: <?php echo $_SESSION['name']; ?></span>
+        <span class="badge bg-text">Email: <?php echo $_SESSION['email']; ?></span>
+        <span class="badge bg-text">Contact No: <?php echo $_SESSION['contactno']; ?></span>
+      </div>
       <nav class="bg-success tab-bar">
-        <a href="home.php" class="tab">Dshaboard</a>
+        <a href="home.php" class="tab">Dashboard</a>
         <a href="?pageflag=adonarlist" class="tab">Donar</a>
         <a href="?pageflag=arecipientlist" class="tab">Recipient</a>
         <a href="?pageflag=doctorlist" class="tab">Doctors</a>
-        <a href="organ_check_availibility.php" class="tab">Check Availability</a>
+        <a href="?pageflag=transactions" class="tab">Transactions</a>
+        <a href="?pageflag=organcheckavailibility" class="tab">Check Availability</a>
         <a href="../logout.php" class="tab">Logout</a>
       </nav>
       <?php
@@ -84,6 +92,12 @@ if(!isset($_SESSION['userid'])){
               break;
             case "updatedoctor":
               include "doctor_update.php";
+              break;
+            case "transactions":
+              include "transactions.php";
+              break;
+             case "organcheckavailibility":
+              include "../organ_check_availibility.php";
               break;
             default:
               echo "<h class='text-center text-danger'> Invalid URL</h1>";
