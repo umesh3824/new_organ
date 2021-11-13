@@ -14,6 +14,7 @@
 // }
 
 // $organData=$oragnObj->selectAllOrgans()['data'];
+$organData=[];
 ?>
 <div class="p-5">
     <div class="row justify-content-center">
@@ -43,9 +44,9 @@
                 <div class="form-group">
                     <label for="address">Which Organ Do you want to donate?</label>
                     <select class="form-control" name="organ">
-                        <!-- <?php //foreach($organData as $organ){ ?> -->
-                            <!-- <option value="<?php //echo $organ['organ_id']; ?>"><?php //echo $organ['organ_name']; ?></option> -->
-                        <!-- <?php //} ?> -->
+                        <?php foreach($organData as $organ){ ?> 
+                            <option value="<?php echo $organ['organ_id']; ?>"><?php echo $organ['organ_name']; ?></option>
+                         <?php } ?> 
                     </select>
                 </div>
                 <div class="text-center mt-2">
