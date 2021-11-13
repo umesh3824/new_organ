@@ -1,11 +1,11 @@
 <?php
-include "/php/includes/config.php";
-include "/php/includes/DBController.php";
-include "/php/doctor.php";
-include "/php/donar.php";
-include "/php/recipient.php";
-include "/php/organ.php";
-include "/php/admin.php";
+include "php/includes/config.php";
+include "php/includes/DBController.php";
+include "php/doctor.php";
+include "php/donar.php";
+include "php/recipient.php";
+include "php/organ.php";
+include "php/admin.php";
 
 $DBObj=new DBController($con);
 $doctorObj=new Doctor($DBObj);
