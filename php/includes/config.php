@@ -7,9 +7,9 @@
 // $dbname = "organ_donation";
 
 $servername = "localhost";
-$username = "epiz_29810514";
-$password = "Ouf3u0AWjb7";
-$dbname = "epiz_29810514_organ";
+$username = "u690523438_pccoedbms";
+$password = "Pccoedbms123";
+$dbname = "u690523438_pccoedbms";
 // Create connection
 session_start();
 $con = new mysqli($servername, $username, $password, $dbname);
