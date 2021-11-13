@@ -48,19 +48,19 @@ $adminObj=new Admin($DBObj);
           }
           switch ($pageflag) {
             case "index":
-              include "/template/index.php";
+              include "template/index.php";
               break;
             case "donarapplication":
-              include "/template/donar_application.php";
+              include "template/donar_application.php";
               break;
             case "recipientapplication":
-              include "/template/recipient_application.php";
+              include "template/recipient_application.php";
               break;
             case "organcheckavailibility":
-              include "/template/organ_check_availibility.php";
+              include "template/organ_check_availibility.php";
               break;
              case "admin":
-              include "/template/admin_login.php";
+              include "template/admin_login.php";
               break;
             default:
               echo "<h1 class='text-center text-danger'> Invalid URL</h1>";
