@@ -63,6 +63,15 @@ class RAppointment extends Record{
         $param_type="i";
         return $this->DBObj->update($this->rejectRAppointmentSql,$param_type,[$recipient_id],"Appointment has been rejected.","Operation failed");
     }
+    public function getAllRecipientDashboardByDoctorId($doctor_id){
+        $data=[];
+        $data['allAppCount']=count($this->getAllAppbyDoctorId($doctor_id)['data']);
+        $data['assignedCount']=count($this->getAssingedAppbyDoctorId($doctor_id)['data']);
+        $data['missingCount']=count($this->getMissingAppbyDoctorId($doctor_id)['data']);
+        $data['doneCount']=count($this->getDoneAppbyDoctorId($doctor_id)['data']);
+
+        return $data;
+    }
 }
 
 // $eventObj=new Event($DBObj);

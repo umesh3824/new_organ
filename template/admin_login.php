@@ -13,7 +13,7 @@ if(isset($_POST['login'])){
             $_SESSION['userRole']="ADMIN";
             $_SESSION['email']=$data['data'][0]['admin_email'];
             $_SESSION['name']=$data['data'][0]['admin_name'];
-            $_SESSION['contactno']=$data['data'][0]['admin_contactno'];
+            $_SESSION['contactno']=$data['data'][0]['admin_contact'];
         }
    }else if($_POST['userRole']=="DOCTOR"){
         $data=$doctorObj->login($userData);

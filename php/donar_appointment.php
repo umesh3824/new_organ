@@ -68,7 +68,15 @@ class DAppointment extends Record{
         $param_type="i";
         return $this->DBObj->update($this->rejectDAppointmentSql,$param_type,[$donar_id],"Appointment has been rejected.","Operation failed");
     }
+    public function getAllDonarDashboardByDoctorId($doctor_id){
+        $data=[];
+        $data['allAppCount']=count($this->getAllAppbyDoctorId($doctor_id)['data']);
+        $data['assignedCount']=count($this->getAssingedAppbyDoctorId($doctor_id)['data']);
+        $data['missingCount']=count($this->getMissingAppbyDoctorId($doctor_id)['data']);
+        $data['doneCount']=count($this->getDoneAppbyDoctorId($doctor_id)['data']);
 
+        return $data;
+    }
 }
 
 // $eventObj=new Event($DBObj);

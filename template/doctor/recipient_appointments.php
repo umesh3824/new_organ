@@ -12,8 +12,16 @@ elseif($status=="MISSING"){
 }elseif($status=="DONE"){
     $allRecipientData = $RAppointmentObj->getDoneAppbyDoctorId($_SESSION['userid'])['data'];
 }
+$ddata=$RAppointmentObj->getAllRecipientDashboardByDoctorId($_SESSION['userid']);
 ?>
 <div>
+    <div>
+        <span class="badge bg-secondary">Total: <?php echo $ddata['allAppCount']; ?></span>
+        <span class="badge bg-warning">Assigned: <?php echo $ddata['assignedCount']; ?></span>
+        <span class="badge bg-danger">Missing: <?php echo $ddata['missingCount']; ?></span>
+        <span class="badge bg-success">Done: <?php echo $ddata['doneCount']; ?></span>
+
+    </div>
     <h4 class="text-center mb-3 text-success mt-2">Recipient Appointments</h4>
     <div class="d-flex justify-content-between mt-0 pt-0">
         <form action="?pageflag=recipientappointments" id="myform" method="post">

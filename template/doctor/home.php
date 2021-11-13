@@ -45,7 +45,6 @@ if(!isset($_SESSION['userid'])){
         <span class="badge bg-text">Contact No: <?php echo $_SESSION['contactno']; ?></span>
       </div>
       <nav class="bg-success tab-bar">
-        <a href="home.php" class="tab">Dashboard</a>
         <a href="?pageflag=donarappointments" class="tab">Donar</a>
         <a href="?pageflag=recipientappointments" class="tab">Recipient</a>
         <a href="../logout.php" class="tab">Logout</a>
@@ -54,12 +53,9 @@ if(!isset($_SESSION['userid'])){
           if (isset($_GET['pageflag'])) {
             $pageflag = $_GET['pageflag'];
           } else {
-            $pageflag = "adashboard";
+            $pageflag = "donarappointments";
           }
           switch ($pageflag) {
-            case "adashboard":
-              include "dashboard.php";
-              break;
             case "donarappointments":
               include "donar_appointments.php";
               break;

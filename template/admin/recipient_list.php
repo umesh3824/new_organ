@@ -48,6 +48,7 @@ $allDoctorData=$doctorObj->selectAllDoctors()['data'];
                 <?php
                 $count = 0;
                 foreach ($allRecipientData as $recipientData) {
+                    if($recipientData['recipient_id']==0) continue;
                 ?>
                     <tr>
                         <td><?php echo ++$count; ?></td>
