@@ -26,7 +26,7 @@ $adminObj=new Admin($DBObj);
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css//all.css">
-  <title>Hello, world!</title>
+  <title>Organ Donation Center</title>
 </head>
 
 <body class="bg-light">
