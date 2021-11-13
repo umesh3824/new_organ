@@ -1,18 +1,18 @@
 <?php
 include "/php/includes/config.php";
-// include "php/includes/DBController.php";
-// include "php/doctor.php";
-// include "php/donar.php";
-// include "php/recipient.php";
-// include "php/organ.php";
-// include "php/admin.php";
+include "/php/includes/DBController.php";
+include "/php/doctor.php";
+include "/php/donar.php";
+include "/php/recipient.php";
+include "/php/organ.php";
+include "/php/admin.php";
 
-// $DBObj=new DBController($con);
-// $doctorObj=new Doctor($DBObj);
-// $donarObj=new Donar($DBObj);
-// $recipientObj=new Recipient($DBObj);
-// $oragnObj=new Organ($DBObj);
-// $adminObj=new Admin($DBObj);
+$DBObj=new DBController($con);
+$doctorObj=new Doctor($DBObj);
+$donarObj=new Donar($DBObj);
+$recipientObj=new Recipient($DBObj);
+$oragnObj=new Organ($DBObj);
+$adminObj=new Admin($DBObj);
 ?>
 <!doctype html>
 <html lang="en">
@@ -48,19 +48,19 @@ include "/php/includes/config.php";
           }
           switch ($pageflag) {
             case "index":
-              include "template/index.php";
+              include "/template/index.php";
               break;
             case "donarapplication":
-              include "template/donar_application.php";
+              include "/template/donar_application.php";
               break;
             case "recipientapplication":
-              include "template/recipient_application.php";
+              include "/template/recipient_application.php";
               break;
             case "organcheckavailibility":
-              include "template/organ_check_availibility.php";
+              include "/template/organ_check_availibility.php";
               break;
              case "admin":
-              include "template/admin_login.php";
+              include "/template/admin_login.php";
               break;
             default:
               echo "<h1 class='text-center text-danger'> Invalid URL</h1>";
