@@ -7,12 +7,12 @@
 // include "php/organ.php";
 // include "php/admin.php";
 
-$DBObj=new DBController($con);
-$doctorObj=new Doctor($DBObj);
-$donarObj=new Donar($DBObj);
-$recipientObj=new Recipient($DBObj);
-$oragnObj=new Organ($DBObj);
-$adminObj=new Admin($DBObj);
+// $DBObj=new DBController($con);
+// $doctorObj=new Doctor($DBObj);
+// $donarObj=new Donar($DBObj);
+// $recipientObj=new Recipient($DBObj);
+// $oragnObj=new Organ($DBObj);
+// $adminObj=new Admin($DBObj);
 ?>
 <!doctype html>
 <html lang="en">
