@@ -1,19 +1,19 @@
 <?php
 
-if(isset($_POST['add_donar'])){
-    $userData=[
-        test_input($_POST['name']),
-        test_input($_POST['email']),
-        test_input($_POST['contactno']),
-        test_input($_POST['dob']),
-        test_input($_POST['address']),
-        test_input($_POST['organ'])
-    ];
-    $data=$donarObj->addDonar($userData);
-    $donarObj->showAlert($data['message']);
-}
+// if(isset($_POST['add_donar'])){
+//     $userData=[
+//         test_input($_POST['name']),
+//         test_input($_POST['email']),
+//         test_input($_POST['contactno']),
+//         test_input($_POST['dob']),
+//         test_input($_POST['address']),
+//         test_input($_POST['organ'])
+//     ];
+//     $data=$donarObj->addDonar($userData);
+//     $donarObj->showAlert($data['message']);
+// }
 
-$organData=$oragnObj->selectAllOrgans()['data'];
+// $organData=$oragnObj->selectAllOrgans()['data'];
 ?>
 <div class="p-5">
     <div class="row justify-content-center">
@@ -43,9 +43,9 @@ $organData=$oragnObj->selectAllOrgans()['data'];
                 <div class="form-group">
                     <label for="address">Which Organ Do you want to donate?</label>
                     <select class="form-control" name="organ">
-                        <?php foreach($organData as $organ){ ?>
-                            <option value="<?php echo $organ['organ_id']; ?>"><?php echo $organ['organ_name']; ?></option>
-                        <?php } ?>
+                        <!-- <?php foreach($organData as $organ){ ?> -->
+                            <!-- <option value="<?php //echo $organ['organ_id']; ?>"><?php //echo $organ['organ_name']; ?></option> -->
+                        <!-- <?php } ?> -->
                     </select>
                 </div>
                 <div class="text-center mt-2">
