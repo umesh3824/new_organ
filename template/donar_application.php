@@ -1,20 +1,19 @@
 <?php
 
-// if(isset($_POST['add_donar'])){
-//     $userData=[
-//         test_input($_POST['name']),
-//         test_input($_POST['email']),
-//         test_input($_POST['contactno']),
-//         test_input($_POST['dob']),
-//         test_input($_POST['address']),
-//         test_input($_POST['organ'])
-//     ];
-//     $data=$donarObj->addDonar($userData);
-//     $donarObj->showAlert($data['message']);
-// }
+if(isset($_POST['add_donar'])){
+    $userData=[
+        test_input($_POST['name']),
+        test_input($_POST['email']),
+        test_input($_POST['contactno']),
+        test_input($_POST['dob']),
+        test_input($_POST['address']),
+        test_input($_POST['organ'])
+    ];
+    $data=$donarObj->addDonar($userData);
+    $donarObj->showAlert($data['message']);
+}
 
-// $organData=$oragnObj->selectAllOrgans()['data'];
-$organData=[];
+$organData=$oragnObj->selectAllOrgans()['data'];
 ?>
 <div class="p-5">
     <div class="row justify-content-center">
