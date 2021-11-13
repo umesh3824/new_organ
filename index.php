@@ -1,11 +1,11 @@
 <?php
-include "./php/includes/config.php";
-include "./php/includes/DBController.php";
-include "./php/doctor.php";
-include "./php/donar.php";
-include "./php/recipient.php";
-include "./php/organ.php";
-include "./php/admin.php";
+// include "php/includes/config.php";
+// include "php/includes/DBController.php";
+// include "php/doctor.php";
+// include "php/donar.php";
+// include "php/recipient.php";
+// include "php/organ.php";
+// include "php/admin.php";
 
 $DBObj=new DBController($con);
 $doctorObj=new Doctor($DBObj);
@@ -63,7 +63,7 @@ $adminObj=new Admin($DBObj);
               include "template/admin_login.php";
               break;
             default:
-              echo "<h class='text-center text-danger'> Invalid URL</h1>";
+              echo "<h1 class='text-center text-danger'> Invalid URL</h1>";
           }
       ?>
       <p class="bg-light m-0 border-bottom border-success p-2 text-center">Contact No:- 8855223366 | E-Mail:- admin@gmail.com</p>
