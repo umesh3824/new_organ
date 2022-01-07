@@ -66,7 +66,7 @@ $adminObj=new Admin($DBObj);
               echo "<h1 class='text-center text-danger'> Invalid URL</h1>";
           }
       ?>
-      <p class="bg-light m-0 border-bottom border-success p-2 text-center">Contact No:- 8855223366 | E-Mail:- admin@gmail.com</p>
+      <p class="bg-light m-0 border-bottom border-success p-2 text-center">Contact No:- 1000000000 | E-Mail:- admin@gmail.com</p>
     </div>
   </div>
   <script src="assets/js/popper.min.js" ></script>
