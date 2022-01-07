@@ -48,3 +48,4 @@
 	}
 //Closing smtp connection
 	$mail->smtpClose();
+?>
