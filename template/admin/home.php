@@ -1,4 +1,10 @@
 <?php
+//Include required PHPMailer files
+require '../../php/phpmail/includes/PHPMailer.php';
+require '../../php/phpmail/includes/SMTP.php';
+require '../../php/phpmail/includes/Exception.php';
+require '../../php/phpmail/send_mail.php';
+
 include "../../php/includes/config.php";
 include "../../php/includes/DBController.php";
 include "../../php/doctor.php";
