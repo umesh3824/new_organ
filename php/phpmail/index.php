@@ -27,19 +27,19 @@
 //Port to connect smtp
 	$mail->Port = "587";
 //Set gmail username
-	$mail->Username = "asstyu9@gmail.com";
+	$mail->Username = "sender@gmail.com";
 //Set gmail password
-	$mail->Password = "8805302569";
+	$mail->Password = "senderpass";
 //Email subject
 	$mail->Subject = "Test email using PHPMailer";
 //Set sender email
-	$mail->setFrom('asstyu9@gmail.com');
+	$mail->setFrom('sender@gmail.com');
 //Enable HTML
 	$mail->isHTML(true);
 //Email body
 	$mail->Body = "<h1>This mail is form Umesh Chaudhari</h1><h1>It is just example of SMTP with Google Mail.</h1><h1>If you got mail properly just acknowledge me.</h1>";
 //Add recipient
-	$mail->addAddress('umeshchaudhariupc@gmail.com');
+	$mail->addAddress('reciver@gmail.com');
 //Finally send email
 	if ( $mail->send() ) {
 		echo "Email Sent..!";
