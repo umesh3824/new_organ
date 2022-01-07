@@ -29,7 +29,7 @@
 //Set gmail username
 	$mail->Username = "asstyu9@gmail.com";
 //Set gmail password
-	$mail->Password = "7030678848";
+	$mail->Password = "8805302569";
 //Email subject
 	$mail->Subject = "Test email using PHPMailer";
 //Set sender email
