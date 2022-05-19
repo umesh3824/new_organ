@@ -6,10 +6,10 @@ $username = "root";
 $password = "";
 $dbname = "organ_donation";
 
-// $servername = "localhost";
-// $username = "u690523438_pccoedbms";
-// $password = "Pccoedbms123";
-// $dbname = "u690523438_pccoedbms";
+$servername = "localhost";
+$username = "u799378581_organ_donation";
+$password = "OrganDonation@1234";
+$dbname = "u799378581_organ_donation";
 // Create connection
 session_start();
 $con = new mysqli($servername, $username, $password, $dbname);
