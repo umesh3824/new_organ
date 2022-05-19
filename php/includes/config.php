@@ -1,15 +1,15 @@
 <?php
 //error_reporting(0);
 
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "organ_donation";
-
 $servername = "localhost";
-$username = "u690523438_pccoedbms";
-$password = "Pccoedbms123";
-$dbname = "u690523438_pccoedbms";
+$username = "root";
+$password = "";
+$dbname = "organ_donation";
+
+// $servername = "localhost";
+// $username = "u690523438_pccoedbms";
+// $password = "Pccoedbms123";
+// $dbname = "u690523438_pccoedbms";
 // Create connection
 session_start();
 $con = new mysqli($servername, $username, $password, $dbname);
