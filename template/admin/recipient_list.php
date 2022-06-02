@@ -12,13 +12,13 @@ if (isset($_POST['schedule'])) {
     $data = $RAppointmentObj->addRAppointment($appData);
     if($data['status']){
         $recipientData=$recipientObj->selectSingleRecipient([test_input($_POST['recipient_id'])])['data'][0];
-        upc_send_mail($recipientData['recipient_email'],"
-                <div style='background-color:#f8f9fa;color:black;padding:10px;border-radius:10px;'>
-                    <p>Hello, ".$recipientData['recipient_name']."<br><br>
-                        Your meeting for requested organ is scheduled on ".test_input($_POST['ra_date'])." at any near by organ donation center.<hr>
-                        If, You have any query feel free to contact on admin@gmail.com
-                    </p>
-            </div>");
+        // upc_send_mail($recipientData['recipient_email'],"
+        //         <div style='background-color:#f8f9fa;color:black;padding:10px;border-radius:10px;'>
+        //             <p>Hello, ".$recipientData['recipient_name']."<br><br>
+        //                 Your meeting for requested organ is scheduled on ".test_input($_POST['ra_date'])." at any near by organ donation center.<hr>
+        //                 If, You have any query feel free to contact on admin@gmail.com
+        //             </p>
+        //     </div>");
     }
     $RAppointmentObj->showAlert($data['message']);
 }

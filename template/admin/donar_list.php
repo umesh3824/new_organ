@@ -12,13 +12,13 @@ if (isset($_POST['schedule'])) {
     $data = $DAppointmentObj->addDAppointment($appData);
     if($data['status']){
         $donarData=$donarObj->selectSingleDonar([test_input($_POST['donar_id'])])['data'][0];
-        upc_send_mail($donarData['donar_email'],"
-                <div style='background-color:#f8f9fa;color:black;padding:10px;border-radius:10px;'>
-                    <p>Hello, ".$donarData['donar_name']."<br><br>
-                        Your meeting for organ donation is scheduled on ".test_input($_POST['da_date'])." at any near by organ donation center.<hr>
-                        If, You have any query feel free to contact on admin@gmail.com
-                    </p>
-            </div>");
+        // upc_send_mail($donarData['donar_email'],"
+        //         <div style='background-color:#f8f9fa;color:black;padding:10px;border-radius:10px;'>
+        //             <p>Hello, ".$donarData['donar_name']."<br><br>
+        //                 Your meeting for organ donation is scheduled on ".test_input($_POST['da_date'])." at any near by organ donation center.<hr>
+        //                 If, You have any query feel free to contact on admin@gmail.com
+        //             </p>
+        //     </div>");
     }
     $DAppointmentObj->showAlert($data['message']);
 }

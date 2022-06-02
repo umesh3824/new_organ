@@ -1,10 +1,10 @@
 <?php
 //error_reporting(0);
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "organ_donation";
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "organ_donation";
 
 $servername = "localhost";
 $username = "u799378581_organ_donation";
